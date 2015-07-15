@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, 
+                                  initial-scale=1.0, 
+                                  maximum-scale=1.0, 
+                                  user-scalable=no, 
+                                  minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      /*this is where you put custom styles*/
+    </style>
+  </head>
+
+  <body>
+    <!-- this is where you put all your pages -->
+    <!-- 
+    > Each page is encapsulated in a <div> element specified with class="app-page"
+    > Each page must have a name for javascript to refer to, 
+      set it in data-page="(name)"
+    -->
+    <div class="" data-page="">
+      <!-- 
+      > The main elements to include in each page are the 'topbar' and 'content', 
+        both inside a separate <div>
+      
+      > Create the top bar with a <div> with class "app-topbar".
+      > Inside the topbar <div>, create another <div>, set the class to "app-title"
+        and name the page inside the <div> element
+       -->
+      <div class="">
+        <div class="">(page name)</div>
+      </div>
+      <!-- 
+      > The content is specified by the class "app-content"
+      > Elements like buttons, lists, and input can be added here
+      -->
+      <div class="">
+        Content here
+      </div>
+    </div>
+
+
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      
+      //This code allows the browser to show the last viewed page, 
+      //if there isn't any, the home page will be loaded
+      try {
+        App.restore();
+      } catch (error) {
+        App.load('home');
+      }
+
+    </script>
+  </body>
+</html>

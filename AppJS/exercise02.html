@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, 
+                                  initial-scale=1.0, 
+                                  maximum-scale=1.0, 
+                                  user-scalable=no, 
+                                  minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      /*this is where you put custom styles*/
+    </style>
+  </head>
+
+  <body>
+    <!-- this is where you put all your pages -->
+    <div class="app-page home-page" data-page="home">
+      <!-- 
+      > In the topbar, we can create buttons to navigate between pages in our stack
+      > Inside the "app-topbar", add 1 or 2 <div> and give it class="app-button"
+      > The placement must be specified by adding class 'left' or 'right'
+      > For each button, you can give it an action target in data-target="(name of target page)"
+       -->
+      <div class="app-topbar">
+        <div class="app-title">Home</div>
+        <div class="app-button left" data-target=""></div>
+        <div class="" data-target=""></div>
+      </div>
+      <div class="app-content">
+        <!-- 
+        > You can create section <div> using class "app-section"
+          and everything in that section will be styled accordingly
+        > some things you can do...
+          <ul> with class "app-list"
+          <input> with class "app-input", and placeholder field
+          <textarea> with class "app-input"
+          <div> with class "app-button" 
+        -->
+        <div class="app-section">
+          <ul class="app-list">
+            <li>Item 1</li>
+            <li class="app-button" data-target="home">Button item</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      
+      //This code allows the browser to show the last viewed page, 
+      //if there isn't any, the home page will be loaded
+      try {
+        App.restore();
+      } catch (error) {
+        App.load('home');
+      }
+
+      //App.load clones the page, creates a controller for it, and displays the page
+
+      //App.controller('page-name', function (page){ 
+      //  do stuff using javascript
+      //}) 
+      //is the controller for each page ('page-name')
+      //Select the page using $(page) and do stuff
+      //you can find specific classes using .find('')
+      App.controller('home', function (page) {
+        // put stuff here
+        $(page)
+          .find('.app-button') //can be specified by id as well
+          .on('click', function () {
+          console.log('a button was clicked!');
+        });
+      });
+
+    </script>
+  </body>
+</html>

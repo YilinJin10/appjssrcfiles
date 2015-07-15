@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, 
+                                  initial-scale=1.0, 
+                                  maximum-scale=1.0, 
+                                  user-scalable=no, 
+                                  minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      /*this is where you put custom styles*/
+    </style>
+  </head>
+
+  <body>
+    <!-- this is where you put all your pages -->
+    <div class="app-page home-page" data-page="home">
+      <!-- 
+      > You can use data-back as a shortcut for data-target for 'Back' button
+      -->
+      <div class="app-topbar">
+        <div class="app-title">Home</div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <div>Menu</div>
+          <ul class="app-list">
+            <li class="app-button" data-target="page2">Page 2</li>
+            <li class="app-button" data-target="page3">Page 3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="page2">
+      <div class="app-topbar">
+        <div class="app-title">Page 2</div>
+        <div class="app-button left" data-back data-autotitle></div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <input class="app-input" placeholder="add...">
+          <ul class="app-list">
+            <li></li>
+          </ul>
+      </div>
+    </div>
+
+    <!-- 
+    > Create 'Page 3' (name the data-page accordingly),
+      and link them with the button in the home page
+    -->
+    <div>
+    </div>
+
+
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      
+      //This code allows the browser to show the last viewed page, 
+      //if there isn't any, the home page will be loaded
+      try {
+        App.restore();
+      } catch (error) {
+        App.load('home');
+      }
+
+      //App.load clones the page, creates a controller for the page ('home'), and displays the page
+      //This controller is selecting the page, and writing to the console on click of any button
+      App.controller('home', function (page) {
+        // put stuff here
+        $(page)
+          .find('.app-button') //can be specified by id as well
+          .on('click', function () {
+          console.log('a button was clicked!');
+        });
+      });
+
+      //App.populator('page-name', function(){})
+      //can used to load data to the page
+      
+    </script>
+  </body>
+</html>
